@@ -1,28 +1,35 @@
-import { View,Text,Button, TouchableOpacity} from "react-native";
+import { View, Text, ScrollView } from "react-native";
+import useDisplayInfo from "@/hooks/useDisplayInfo";
 import HomeActiveItem from "./HomeActiveItem";
+import useDisplayStat from "@/hooks/useDisplaystat";
 
-export default function HomeInfo(){
-    return (
-      <View className="w-full h-screen justify-center bg-slate-200 relative">
-        <View className="gap-5">
-          <View className="bg-white rounded-lg p-4">
-            <Text>20 pesanan selesai</Text>
-            <Text>dengan total pesanan 178.000 (stk)</Text>
-          </View>
-          <View className="bg-white p-4 rounded-lg">
-            <Text className="text-2xl font-bold">3 orders left</Text>
-            <View className="">
-              <View className="flex-row justify-evenly items-center gap-3 border-b border-slate-700 py-2">
-                <Text>Nama</Text>
-                <Text>Total</Text>
-                <Text>Status</Text>
-              </View>
-              <HomeActiveItem />
-              <HomeActiveItem />
-              <HomeActiveItem />
+export default function HomeInfo() {
+  const info = useDisplayInfo()
+  const stat = useDisplayStat()
+
+  return (
+    <View className="w-full pb-10">
+      <View className="gap-5">
+        <View className="bg-white rounded-xl p-5 shadow-sm">
+          <Text className="text-slate-800 text-lg font-semibold">{stat.finishAmount} pesanan selesai</Text>
+          <Text className="text-slate-500 mt-1">dengan total pesanan {stat.totalAmount} (stk)</Text>
+        </View>
+        <View className="bg-white p-5 rounded-xl shadow-sm">
+          <Text className="text-2xl font-bold mb-4 text-slate-800">{info.stat} orders left</Text>
+          <View className="w-full">
+            <View className="flex-row items-center border-b border-slate-200 pb-3 mb-2">
+              <Text className="flex-1 font-semibold text-slate-600 text-center">Nama</Text>
+              <Text className="flex-1 font-semibold text-slate-600 text-center">Total</Text>
+              <Text className="flex-1 font-semibold text-slate-600 text-center"> </Text>
+            </View>
+            <View className="w-full flex-col gap-2">
+              {info.data.map((item) => (
+                <HomeActiveItem key={item.id} itemData={item} />
+              ))}
             </View>
           </View>
         </View>
       </View>
-    );
+    </View>
+  );
 }

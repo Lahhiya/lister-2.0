@@ -2,7 +2,7 @@ import useSetting from "@/store/useSettingStore";
 import { Button, Switch, Text, View } from "react-native";
 
 export default function SettingTab() {
-  const { displayDummy, toggleDisplayDummy } = useSetting();
+  const { showDummy, toggleShowDummy } = useSetting();
   const { autoBackup, toggleAutoBackup } = useSetting();
   const { reminder, toggleReminder } = useSetting();
 
@@ -14,7 +14,7 @@ export default function SettingTab() {
         </View>
         <View className="flex-row justify-between items-center">
           <Text> Display Dummy Data : </Text>
-          <Switch value={displayDummy} onValueChange={toggleDisplayDummy} />
+          <Switch value={showDummy} onValueChange={toggleShowDummy} />
         </View>
         <View className="flex-row justify-between items-center">
           <Text> Auto Backup : </Text>

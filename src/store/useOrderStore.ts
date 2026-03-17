@@ -1,15 +1,14 @@
 import { DummyDataType, OrderDataType } from "@/schema/orderDataType";
 import { create } from "zustand";
-import useSettingStore from "./useSettingStore";
-
-const { displayDummy } = useSettingStore();
-
+import { generateDummyData } from "@/assets/data/dummyGen";
 interface OrderState {
-  order: [] | OrderDataType[];
-  dummyOrder: [] | DummyDataType[];
+  order: OrderDataType[];
+  dummyOrder: DummyDataType[];
 }
 
-const useOrderStore = create<OrderState>((set) => ({
+const useOrderStore = create<OrderState>((set, get) => ({
   order: [],
-  dummyOrder: [],
+  dummyOrder: generateDummyData(50) as DummyDataType[]
 }));
+
+export default useOrderStore;

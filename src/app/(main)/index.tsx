@@ -1,21 +1,15 @@
-import dummyData from "@/assets/data/dummyData";
 import AddButton from "@/components/buttons/AddButton";
-import HomeChart from "@/components/home/HomeChart";
 import HomeInfo from "@/components/home/HomeInfo";
 import { ScrollView, View } from "react-native";
 
 export default function Index() {
-
   return (
-    <View className="justify-center flex-wrap items-center h-auto relative">
-      <ScrollView>
-        <HomeInfo></HomeInfo>
-        <HomeChart></HomeChart>
-        <HomeChart></HomeChart>
+    <View className="flex-1 bg-slate-100 relative">
+      <ScrollView className="flex-1" contentContainerClassName="p-4 pb-24">
+        <HomeInfo />
       </ScrollView>
-      <View className="absolute right-5 bottom-5 flex-col gap-5">
-        <AddButton></AddButton>
-        {/* <Back2TopButton></Back2TopButton> */}
+      <View className="absolute right-6 bottom-6 flex-col gap-5 z-10">
+        <AddButton />
       </View>
     </View>
   );

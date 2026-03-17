@@ -6,9 +6,9 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "module": "esnext"
   },
-  "module": "esnext",
   "include": [
     "**/*.ts",
     "**/*.tsx",

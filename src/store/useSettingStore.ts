@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 interface SettingState {
-    displayDummy : boolean
-    toggleDisplayDummy : () => void
+    showDummy : boolean
+    toggleShowDummy : () => void
     autoBackup : boolean
     toggleAutoBackup : () => void
     reminder : boolean
@@ -10,9 +10,9 @@ interface SettingState {
 }
 
 const useSettingStore = create<SettingState>((set) => ({
-    displayDummy: true,
-    toggleDisplayDummy: () =>
-        set((state) => ({ displayDummy: !state.displayDummy })),
+    showDummy: true,
+    toggleShowDummy: () =>
+        set((state) => ({ showDummy: !state.showDummy })),
 
     autoBackup: false,
     toggleAutoBackup: () =>
