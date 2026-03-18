@@ -7,6 +7,8 @@ interface SettingState {
     toggleAutoBackup : () => void
     reminder : boolean
     toggleReminder : () => void
+    sortBy : 'none' | 'name' | 'status' | 'date' | 'amount'
+    setSortBy : (sortBy : 'none' | 'name' | 'status' | 'date' | 'amount') => void
 }
 
 const useSettingStore = create<SettingState>((set) => ({
@@ -21,6 +23,8 @@ const useSettingStore = create<SettingState>((set) => ({
     reminder: false,
     toggleReminder: () =>
         set((state) => ({ reminder: !state.reminder })),
+    sortBy : 'none',
+    setSortBy : (sortBy) => set({sortBy : sortBy}),
 }));
 
 export default useSettingStore;

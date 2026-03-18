@@ -1,20 +1,38 @@
 import { View,Text,TouchableOpacity } from "react-native"
-export default function OrderListItem(){
+import { orderListType } from "@/schema/orderListType"
+import { Link } from "expo-router"
+
+export default function OrderListItem({item}: {item: orderListType}){
+    let stats;
+    switch(item.status){
+        case 0: 
+            stats = "❌"
+            break;
+        case 1: 
+            stats = "⏳"
+            break;
+        case 2: 
+            stats = "✔"
+            break;
+    }
+    
     return(
-        <TouchableOpacity className="w-full h-16 flex-row border border-gray-800 bg-blue-200 justify-center items-center">
+        <Link href={`/detail/${item.id}` as any} asChild>
+        <TouchableOpacity activeOpacity={0.8}  className="w-full h-16 flex-row bg-white border-2 rounded-xl my-1 border-slate-400 justify-center items-center">
             <View className="w-1/6 flex-row justify-center items-center">
-                <Text>✔</Text>
+                <Text className="text-2xl">{stats}</Text>
             </View>
-            <View className="w-5/6 flex-row gap-2 justify-center items-center bg-red-300">
+            <View className="w-5/6 flex-row gap-2 justify-center items-center">
             <View>
-                <Text>Nama : budi</Text>
-                <Text>jumlah : 999</Text>
+                <Text>Nama : {item.name}</Text>
+                <Text>jumlah : {item.total}</Text>
             </View>
             <View>
-                <Text>index : 3</Text>
-                <Text> added : 12 hours ago</Text>
+                <Text>index : {item.id}</Text>
+                <Text> added : {item.added}</Text>
             </View>
             </View>
         </TouchableOpacity>
+        </Link>
     )
 }
