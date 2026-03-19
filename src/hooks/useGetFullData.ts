@@ -1,6 +1,6 @@
 import { findById } from "@/helper/findByData"
 import useGetOrderData from "./useGetOrderData"
-import transformFullData from "@/helper/transformFullData"
+import transformFullData from "@/helper/format/format.detail"
 
 
 const useGetFullData = (id:string | number) => {

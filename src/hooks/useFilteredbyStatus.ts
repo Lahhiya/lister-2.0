@@ -1,10 +1,12 @@
-import useGetOrderData from "./useGetOrderData"
-import { OrderDataType,DummyDataType } from "@/schema/orderDataType"
+import { DummyDataType, OrderDataType } from "@/schemas/orderDataType";
+import useGetOrderData from "./useGetOrderData";
 
-const useFilteredbyStatus = (status : number[]) => {
-    const data = useGetOrderData()
-    const res = data.filter((item : OrderDataType | DummyDataType) => status.includes(item.status))
-    return res
-}
+const useFilteredbyStatus = (status: number[]) => {
+  const data = useGetOrderData();
+  const res = data.filter((item: OrderDataType | DummyDataType) =>
+    status.includes(item.status),
+  );
+  return res;
+};
 
-export default useFilteredbyStatus
+export default useFilteredbyStatus;

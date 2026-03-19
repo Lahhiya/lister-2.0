@@ -1,7 +1,7 @@
 import useSearchStore from "@/store/useSearchStore";
 import { searchByName } from "@/helper/searchByData";
 import useGetOrderData from "./useGetOrderData";
-import { useMemo ,useCallback} from "react";
+import { useCallback} from "react";
 
 const useSearchData = () => {
     const {searchQuery,setSearchRes,resetQuery} = useSearchStore()
