@@ -11,9 +11,9 @@ const useDisplayLatest: res = () => {
   const newobj = data.map((item) => {
     return {
       id: item.id,
-      uuid: item.uuid,
       name: item.name,
-      progress: `${item.progress}/${item.total}`,
+      progress: item.progress,
+      total: item.total,
       status: item.status,
     };
   });

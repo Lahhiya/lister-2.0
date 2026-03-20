@@ -1,8 +1,8 @@
 interface DisplayLatestType {
   id: number;
-  uuid: string;
   name: string;
-  progress: string;
+  progress: number;
+  total: number;
   status: number
 }
 

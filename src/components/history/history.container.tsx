@@ -1,34 +1,79 @@
-import HistoryItem from "@/components/history/History.item";
+import HistoryItem from "@/components/history/History.Item";
 import useDisplayData from "@/hooks/display/useDisplayHistory";
-import useSettingStore from "@/store/useSettingStore";
-import { Button, FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
+import { Text } from "gs/ui/text";
+import { Grid ,GridItem } from "gs/ui/grid";
+import { Box } from "gs/ui/box";
+import { Divider } from "gs/ui/divider";
 
 export default function HistoryContainer() {
   const data = useDisplayData();
-  const setSort = useSettingStore((state) => state.setSortBy);
   return (
-    <View className="h-full flex-col">
-      <View className="flex-row justify-center">
-        <View className="flex-1">
-          <Button title="nama" onPress={() => setSort("name")}></Button>
-        </View>
-        <View className="flex-1">
-          <Button title="status" onPress={() => setSort("status")}></Button>
-        </View>
-        <View className="flex-1">
-          <Button title="jumlah" onPress={() => setSort("amount")}></Button>
-        </View>
-        <View className="flex-1">
-          <Button title="reset" onPress={() => setSort("none")}></Button>
-        </View>
-      </View>
-      <View>
-        <Text className="text-3xl m-3">daftar pesanan :</Text>
-      </View>
+    <View className="h-full w-full flex-col">
+      <Grid
+        className="bg-white h-16"
+        _extra={{
+          className: "grid-cols-6",
+        }}
+      >
+        <GridItem
+          className="p-3 text-center items-center justify-center"
+          _extra={{
+            className: "col-span-1",
+          }}
+        >
+          <Text className="font-bold text-black" size="sm">Status</Text>
+        </GridItem>
+
+        <GridItem
+          className="p-3 text-center items-center justify-center"
+          _extra={{
+            className: "col-span-2",
+          }}
+        >
+          <Text className="font-bold text-black" size="sm">Name</Text>
+        </GridItem>
+
+        <GridItem
+          className="p-3 text-center items-center justify-center"
+          _extra={{
+            className: "col-span-1",
+          }}
+        >
+          <Text className="font-bold text-black" size="sm">Total</Text>
+        </GridItem>
+
+        <GridItem
+          className="p-3 text-center items-center justify-center"
+          _extra={{
+            className: "col-span-1",
+          }}
+        >
+          <Text className="font-bold text-black" size="sm">Date</Text>
+        </GridItem>
+
+        <GridItem
+          className="p-3 text-center items-center justify-center"
+          _extra={{
+            className: "col-span-1",
+          }}
+        >
+          <Text className="font-bold text-black" size="sm">Index</Text>
+        </GridItem>
+      </Grid>
+
+
       <FlatList
+        className="w-full"
         data={data}
-        renderItem={({ item }) => <HistoryItem item={item!} />}
-        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item ,index}) => <HistoryItem item={item!} index={index} />}
+        keyExtractor={(item) => item.id.toString()}
+        ListEmptyComponent={
+          <Box className="flex-1 items-center justify-center">
+            <Text className="text-black">Sorry there's no data right now</Text>
+          </Box>
+        }
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );

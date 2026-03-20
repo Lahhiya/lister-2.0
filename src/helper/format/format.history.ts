@@ -10,7 +10,7 @@ const formatHistory = (
     const newObj: historyOrderType = {
       id: input.id,
       name: input.name,
-      added: "anggep aja ada",
+      added: "1 sec ago",
       status: input.status,
       total: input.total,
     };

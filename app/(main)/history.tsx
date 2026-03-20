@@ -1,12 +1,14 @@
 import SearchButton from "@/components/buttons/SearchButton";
-import ListOrder from "@/components/history/history.container";
-import { View } from "react-native";
+import HistoryContainer from "@/components/history/History.Container";
+import { Box } from "gs/ui/box";
 
 export default function listTab() {
   return (
-    <View className="h-full bg-slate-200">
-      <ListOrder />
+    <Box className="relative h-full w-full bg-white">
+      <Box className="flex-1 border-t-2 border-b-2 border-slate-300 bg-white shadow-sm">
+        <HistoryContainer />
+      </Box>
       <SearchButton />
-    </View>
+    </Box>
   );
 }
