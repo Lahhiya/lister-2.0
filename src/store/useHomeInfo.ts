@@ -1,35 +1,34 @@
 import { filterByActive, filterByFinish } from "@/helper/filterByData";
-import transformDisplay from "@/helper/format/format.active";
-import { DisplayInfoType } from "@/schemas/displayLatest";
-import { DummyDataType, OrderDataType } from "@/schemas/orderDataType";
+import { formatLatest, LatestFormatType } from "@/helper/formatBydata";
+import { OrderDataType } from "@/schemas/orderDataType";
 import { create } from "zustand";
 
 interface HomeInfoState {
-  orderActive: OrderDataType[] | DummyDataType[];
-  orderFinish: OrderDataType[] | DummyDataType[];
-  setOrderActive: (input: OrderDataType[] | DummyDataType[]) => void;
-  setOrderFinish: (input: OrderDataType[] | DummyDataType[]) => void;
-  displayInfo: () => DisplayInfoType[];
+  orderActive: OrderDataType[];
+  orderFinish: OrderDataType[];
+  setOrderActive: (input: OrderDataType[]) => void;
+  setOrderFinish: (input: OrderDataType[]) => void;
+  displayInfo: () => LatestFormatType[];
   displayAmount: () => number;
 }
 
 const useHomeInfoStore = create<HomeInfoState>((set, get) => ({
   orderActive: [],
   orderFinish: [],
-  setOrderActive: (input: OrderDataType[] | DummyDataType[]) =>
+  setOrderActive: (input: OrderDataType[]) =>
     set(() => {
       const res = filterByActive(input);
       return { orderActive: res };
     }),
 
-  setOrderFinish: (input: OrderDataType[] | DummyDataType[]) =>
+  setOrderFinish: (input: OrderDataType[]) =>
     set(() => {
       const res = filterByFinish(input);
       return { orderFinish: res };
     }),
 
   displayInfo: () => {
-    const res = transformDisplay(get().orderActive);
+    const res = formatLatest(get().orderActive);
     return res;
   },
 

@@ -1,15 +1,15 @@
-interface DummyDataType {
-  id: number;
-  uuid: string;
-  name: string;
-  total: number;
-  progress: number;
-  timeStamp: number[];
-  createdAt: number;
-  finishAt: number;
-  message: string;
-  status: number;
-}
+// interface DummyDataType {
+//   id: number;
+//   uuid: string;
+//   name: string;
+//   total: number;
+//   progress: number;
+//   timeStamp: number[];
+//   createdAt: number;
+//   finishAt: number;
+//   message: string;
+//   status: number;
+// }
 
 interface OrderDataType {
   id: number;
@@ -24,4 +24,4 @@ interface OrderDataType {
   status: number;
 }
 
-export type { DummyDataType, OrderDataType }
+export type {OrderDataType }

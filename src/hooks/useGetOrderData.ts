@@ -1,6 +1,6 @@
 import useOrderStore from "@/store/useOrderStore";
 import useSettingStore from "@/store/useSettingStore";
-import { useMemo} from "react";
+import { useMemo } from "react";
 
 /**
  * @description determine which data to return based on showDummy state

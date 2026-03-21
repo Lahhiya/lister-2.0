@@ -1,13 +1,14 @@
 import HistoryItem from "@/components/history/History.Item";
-import useDisplayData from "@/hooks/display/useDisplayHistory";
-import { FlatList, View } from "react-native";
-import { Text } from "gs/ui/text";
-import { Grid ,GridItem } from "gs/ui/grid";
+import useDisplayHistory from "@/hooks/useSortHistory";
 import { Box } from "gs/ui/box";
-import { Divider } from "gs/ui/divider";
+import { Grid, GridItem } from "gs/ui/grid";
+import { Text } from "gs/ui/text";
+import { useMemo } from "react";
+import { FlatList, View } from "react-native";
 
 export default function HistoryContainer() {
-  const data = useDisplayData();
+  const datas = useDisplayHistory();
+  const data = useMemo(()=>(datas),[datas])
   return (
     <View className="h-full w-full flex-col">
       <Grid
@@ -22,7 +23,9 @@ export default function HistoryContainer() {
             className: "col-span-1",
           }}
         >
-          <Text className="font-bold text-black" size="sm">Status</Text>
+          <Text className="font-bold text-black" size="sm">
+            Status
+          </Text>
         </GridItem>
 
         <GridItem
@@ -31,7 +34,9 @@ export default function HistoryContainer() {
             className: "col-span-2",
           }}
         >
-          <Text className="font-bold text-black" size="sm">Name</Text>
+          <Text className="font-bold text-black" size="sm">
+            Name
+          </Text>
         </GridItem>
 
         <GridItem
@@ -40,7 +45,9 @@ export default function HistoryContainer() {
             className: "col-span-1",
           }}
         >
-          <Text className="font-bold text-black" size="sm">Total</Text>
+          <Text className="font-bold text-black" size="sm">
+            Total
+          </Text>
         </GridItem>
 
         <GridItem
@@ -49,7 +56,9 @@ export default function HistoryContainer() {
             className: "col-span-1",
           }}
         >
-          <Text className="font-bold text-black" size="sm">Date</Text>
+          <Text className="font-bold text-black" size="sm">
+            Date
+          </Text>
         </GridItem>
 
         <GridItem
@@ -58,15 +67,18 @@ export default function HistoryContainer() {
             className: "col-span-1",
           }}
         >
-          <Text className="font-bold text-black" size="sm">Index</Text>
+          <Text className="font-bold text-black" size="sm">
+            Index
+          </Text>
         </GridItem>
       </Grid>
-
 
       <FlatList
         className="w-full"
         data={data}
-        renderItem={({ item ,index}) => <HistoryItem item={item!} index={index} />}
+        renderItem={({ item, index }) => (
+          <HistoryItem item={item} index={index} />
+        )}
         keyExtractor={(item) => item.id.toString()}
         ListEmptyComponent={
           <Box className="flex-1 items-center justify-center">

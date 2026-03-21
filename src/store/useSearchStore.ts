@@ -1,4 +1,4 @@
-import { DummyDataType, OrderDataType } from "@/schemas/orderDataType";
+import { OrderDataType } from "@/schemas/orderDataType";
 import { create } from "zustand";
 
 interface SearchState {
@@ -6,8 +6,8 @@ interface SearchState {
   setSearchQuery: (input: string) => void;
   resetQuery: () => void;
 
-  searchRes: [] | OrderDataType[] | DummyDataType[];
-  setSearchRes: (input: [] | OrderDataType[] | DummyDataType[]) => void;
+  searchRes: [] | OrderDataType[];
+  setSearchRes: (input: [] | OrderDataType[]) => void;
   resetRes: () => void;
 }
 
@@ -17,7 +17,7 @@ const useSearchStore = create<SearchState>((set, get) => ({
   resetQuery: () => set({ searchQuery: "" }),
 
   searchRes: [],
-  setSearchRes: (input: [] | OrderDataType[] | DummyDataType[]) => {
+  setSearchRes: (input: [] | OrderDataType[]) => {
     set({ searchRes: input });
   },
   resetRes: () => set({ searchRes: [] }),

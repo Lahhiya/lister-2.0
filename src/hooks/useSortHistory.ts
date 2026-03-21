@@ -1,19 +1,16 @@
-import formatOrderLists from "@/helper/format/format.history";
+import { formatHistory } from "@/helper/formatBydata";
 import {
   sortById,
   sortByName,
   sortByStatus,
   sortByTotal,
 } from "@/helper/sortByData";
-import { historyOrderType } from "@/schemas/historyType";
 import useSettingStore from "@/store/useSettingStore";
-import useGetOrderData from "../useGetOrderData";
+import useGetOrderData from "./useGetOrderData";
 
-const useDisplayHistory = () => {
+const useSortHistory = () => {
   const orderData = useGetOrderData();
-  const formattedData = orderData
-    .map((item) => formatOrderLists(item))
-    .filter((item): item is historyOrderType => item !== null);
+  const formattedData = formatHistory(orderData);
   const sortType = useSettingStore((state) => state.sortBy);
   switch (sortType) {
     case "none":
@@ -28,4 +25,4 @@ const useDisplayHistory = () => {
       return sortById(formattedData);
   }
 };
-export default useDisplayHistory;
+export default useSortHistory;

@@ -1,15 +1,15 @@
-import { historyOrderType } from "@/schemas/historyType";
 import { router } from "expo-router";
 import { Grid, GridItem } from "gs/ui/grid";
 import { Pressable } from "gs/ui/pressable";
 import { Text } from "react-native";
 import IconStatus from "@/utils/utils.IconStatus";
+import { FormatHistoryType } from "@/helper/formatBydata";
 
 export default function Historyitem({
   item,
   index,
 }: {
-  item: historyOrderType;
+  item: FormatHistoryType;
   index: number;
 }) {
   const stats = IconStatus({ status: item.status });

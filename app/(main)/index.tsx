@@ -5,7 +5,7 @@ import { Box } from "gs/ui/box";
 
 export default function Index() {
   return (
-    <Box className="relative items-center flex-1 w-full h-full bg-white">
+    <Box className="relative items-center flex-1 w-full h-full bg-slate-50">
       <HomeInfoStats />
       <Box className="flex-1 w-full -my-2 border-2 border-slate-300 bg-white shadow-sm rounded-xl">
         <HomeActiveContainer />
